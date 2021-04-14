@@ -24,7 +24,7 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
 
-        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browser = System.getProperty("web.browser", "chrome");
 
         String remoteDriver = System.getProperty("remote.web.driver");
         if (remoteDriver != null) {
