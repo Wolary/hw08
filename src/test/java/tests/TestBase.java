@@ -24,6 +24,8 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
 
+        Configuration.browser = System.getProperty("web.browser", "chrome");
+
         String remoteDriver = System.getProperty("remote.web.driver");
         if (remoteDriver != null) {
             String user = driverConfig.remoteUser();
@@ -42,7 +44,8 @@ public class TestBase {
         attachScreenshot("Last screenshot");
         attachPageSource();
         attachAsText("Browser console logs", getConsoleLogs());
-        attachVideo();
+        if (System.getProperty("video.storage") != null)
+            attachVideo();
         closeWebDriver();
     }
 }
